@@ -1,0 +1,645 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+TC:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+@font-face {
+    font-family: LEMONMILK;
+    src: url(webfonts/LEMONMILK-Bold.otf);
+}
+
+@font-face {
+    font-family: openhuninn;
+    src: url(webfonts/jf-openhuninn-2.0.ttf);
+}
+
+/* 重置所有標籤的樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 重置字體 */
+body {
+    font-family:
+        /*西文*/
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial,
+        /*中文*/
+        "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", sans-serif;
+    font-size: 100%;
+    line-height: 1.5;
+    color: var(--deep);
+}
+
+/* 重置標題 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+/* 重置列表 */
+ul,
+ol {
+    list-style: none;
+}
+
+/* 重置圖片 */
+img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 重置連接 */
+a {
+    display: block;
+    /* 區塊按鈕 */
+    color: var(--deep);
+    text-decoration: none;
+}
+
+/* 變數 */
+:root {
+    /* 灰階 */
+    --deep: #333;
+    --light: #f1f1f1;
+    /* 背景色 */
+    --bg-1: #F2EDF0;
+    --bg-2: #E6ECE5;
+    --bg-3: #dee5ec;
+    --bg-4: #dcced4;
+    /* 透明色 */
+    --alpha-1: rgba(0, 0, 0, 0.6);
+    --alpha-2: rgba(0, 0, 0, 0.8);
+    --alpha-3: rgba(239, 205, 225, 0.6);
+    --alpha-4: rgba(255, 255, 255, 0.2);
+    --alpha-5: rgba(0, 0, 0, 0.2);
+
+    /* 捲軸色調 */
+    --scrollbar1: #f3e4e4;
+    --scrollbar2: #efdbdb;
+    --scrollbar3: #cdaaab;
+    --scrollbar4: #8f6b6d;
+
+}
+
+/* 卷軸 */
+::-webkit-scrollbar {
+    /* 滾動條 */
+    width: 15px;
+    height: 15px;
+}
+
+::-webkit-scrollbar-button {
+    /* 捲軸上的按鈕（向上和向下的箭頭）*/
+    background-color: var(--scrollbar4);
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    /* 可拖曳的滾動手柄 */
+    background-color: var(--scrollbar3);
+    border: 1px solid var(--scrollbar4);
+}
+
+::-webkit-scrollbar-track {
+    /*滾動條的軌道（進度條）*/
+    background-color: var(--scrollbar2);
+    border: 1px solid var(--scrollbar4);
+}
+
+/*::-webkit-scrollbar-track-piece {
+    軌道（進度條）未被手柄覆蓋 
+}*/
+::-webkit-scrollbar-corner {
+    /* 滾動條的底角，水平和垂直滾動條相交的地方 */
+    background-color: var(--scrollbar1);
+}
+
+/* 頁首區 */
+.topbar {
+    display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* 預設主軸方向為水平 */
+    /* flex-direction: row; row為預設值可省略 */
+    justify-content: space-between;
+    /* 主軸(水平)分佈頭尾對齊 */
+    padding: 10px 15px;
+    z-index: 99;
+    font-family: openhuninn, sans-serif;
+}
+
+.logo {
+    width: 80px;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    /* 主軸(垂直) */
+    align-items: flex-end;
+    /* 副軸(水平)齊底(靠右) */
+}
+
+.navigation ul {
+    display: flex;
+}
+
+.icon a {
+    width: 35px;
+    height: 35px;
+    transition: .4s;
+}
+
+.icon-fb {
+    /* 背景圖片為svg時,size會自動100% */
+    background-image: url(images/icon-fb.svg);
+}
+
+.icon-ig {
+    background-image: url(images/icon-ig.svg);
+}
+
+.icon-line {
+    background-image: url(images/icon-line.svg);
+}
+
+/* hover */
+.icon-fb:hover {
+    background-image: url(images/icon-fb-hover.svg);
+}
+
+.icon-ig:hover {
+    background-image: url(images/icon-ig-hover.svg);
+}
+
+.icon-line:hover {
+    background-image: url(images/icon-line-hover.svg);
+}
+
+.menu {
+    border-radius: 99px;
+    margin: 10px 0;
+    padding: 0 20px;
+}
+
+.menu a {
+    /* display: block; */
+    margin: 10px;
+    /*父元素不固定寬度時，使用固定間距 */
+    padding: 5px;
+    transition: .4s;
+    border-bottom: transparent 2px solid;
+    border-top: transparent 2px solid;
+}
+
+.menu a:hover {
+    border-bottom: var(--deep) 2px solid;
+}
+
+/* <main>主要內容區共用設定 */
+section {
+    display: flex;
+    flex-direction: column;
+    /* 主軸(垂直) */
+    justify-content: center;
+    /* 主軸(垂直)置中 */
+    align-items: center;
+    /* 副軸(水平)置中 */
+    height: 100vh;
+}
+
+.title {
+    margin-bottom: 30px;
+}
+
+.title h2 {
+    font-family: LEMONMILK, sans-serif;
+    font-size: 3rem;
+    border-bottom: var(--deep) 3px solid;
+    margin-bottom: 0.5rem;
+}
+
+.title h3 {
+    font-family: openhuninn, sans-serif;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+
+.list-box {
+    display: flex;
+    width: 80%;
+}
+
+.item {
+    flex: 1;
+    margin: 0 15px;
+    border: var(--deep) 1px solid;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    transition: .4s;
+}
+
+#news h1,
+#service h1 {
+    margin: 10px 20px;
+    font-family: "Kanit", sans-serif;
+    font-size: 2rem;
+}
+
+#news p,
+#service p {
+    margin: 0 20px 30px;
+    font-family: "Open Sans", "Noto Sans TC", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    line-height: 1.7;
+}
+
+/* 最新消息NEWS區 */
+#news {
+    background-color: var(--bg-1);
+}
+
+#news .item:hover {
+    background-color: white;
+}
+
+#news figure {
+    height: 35vh;
+}
+
+#news img {
+    object-fit: cover;
+    height: 100%;
+}
+
+#news p {
+    /* margin: 0 20px 30px;
+    font-family: "Open Sans","Noto Sans TC",sans-serif;
+    font-optical-sizing: auto;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    line-height: 1.7; */
+    text-align: justify;
+
+    /* 多行省略 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+}
+
+/* 服務項目SERVICE區 */
+#service {
+    background-color: var(--bg-2);
+}
+
+#service .item {
+    display: flex;
+    /* 主軸水平 */
+    align-items: flex-end;
+    /* 副軸垂直置底 */
+    height: 60vh;
+    /* 背景影像RWD自動縮放置中剪裁 */
+    background-size: cover;
+    background-position: center;
+}
+
+#service .svc1 {
+    background-image: url(./images/pt_svc1.jpg);
+}
+
+#service .svc2 {
+    background-image: url(./images/pt_svc2.jpg);
+}
+
+#service .svc3 {
+    background-image: url(./images/pt_svc3.jpg);
+}
+
+#service .svc4 {
+    background-image: url(./images/pt_svc4.jpg);
+}
+
+#service a {
+    width: 100%;
+    /* flex會將寬度自動延展，要另外給寬度 */
+    background-color: var(--alpha-1);
+    color: var(--light);
+    transition: .4s;
+}
+
+#service a:hover {
+    background-color: var(--alpha-2);
+}
+
+#service p {
+    /* 單行省略 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 相關影片VIDEO區 */
+#video {
+    background-color: var(--bg-3);
+}
+
+#video .video {
+    width: 60%;
+    max-width: 850px;
+}
+
+#video video {
+    width: 100%;
+}
+
+/* 關於我們ABOUT區 */
+#about {
+    background-color: var(--bg-4);
+}
+
+#about div {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 55%;
+    height: 100vh;
+    background-color: var(--alpha-3);
+    padding: 0 5%;
+}
+
+#about .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#about p {
+    height: 60vh;
+    padding: 0 1rem 1rem;
+    overflow: scroll;
+}
+
+#about p::-webkit-scrollbar {
+    /* 滾動條 */
+    width: 12px;
+    height: 12px;
+}
+
+#about p::-webkit-scrollbar-button {
+    /* 捲軸上的按鈕（向上和向下的箭頭）*/
+    background-color: var(--scrollbar4);
+    width: 12px;
+    height: 12px;
+}
+
+#about p::-webkit-scrollbar-thumb {
+    /* 可拖曳的滾動手柄 */
+    background-color: var(--scrollbar3);
+    border: 1px solid var(--scrollbar4);
+}
+
+#about p::-webkit-scrollbar-track {
+    /*滾動條的軌道（進度條）*/
+    background-color: var(--scrollbar2);
+    border: 1px solid var(--scrollbar4);
+}
+
+/*#about p::-webkit-scrollbar-track-piece {
+    軌道（進度條）未被手柄覆蓋 
+}*/
+#about p::-webkit-scrollbar-corner {
+    /* 滾動條的底角，水平和垂直滾動條相交的地方 */
+    background-color: var(--scrollbar1);
+}
+
+#about video {
+    /* z-index: -1; */
+    /* position: absolute; */
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: overlay;
+}
+
+/* 聯絡我們CONTACT */
+#contact {
+    background: url(./images/bg_contact.jpg) center fixed;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    /* 不可寫入縮寫中 */
+
+    /* background-image: url(./images/bg_contact.jpg);
+    background-position: center;
+    background-attachment: fixed; */
+    /* 固定背景位置 */
+}
+
+#contact-form {
+    width: 35%;
+    max-width: 400px;
+    min-width: 300px;
+}
+
+#contact-form>* {
+    display: block;
+    width: 100%;
+}
+
+#contact-form label {
+    font-size: .85rem;
+    margin: 1.5rem 0 .5rem;
+}
+
+#contact-form input,
+#contact-form textarea {
+    font-family: "Open Sans", "Noto Sans TC", sans-serif;
+    font-optical-sizing: auto;
+    font-size: .9rem;
+    font-weight: 700;
+    padding: 10px;
+    color: #8d5d60;
+    /* border: 1px solid var(--scrollbar3); */
+    border-radius: 5px;
+    background-color: transparent;
+    /* 取消欄位預設的背景顏色 */
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    outline: 2px solid var(--scrollbar4);
+}
+
+#contact-form input::placeholder {
+    color: #a38a8a;
+    font-weight: 400;
+}
+
+.glassmorphism {
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .5), rgba(255, 255, 255, .2));
+    /* 若套到表單欄位上，則需取消欄位預設的背景顏色 */
+    backdrop-filter: blur(3px);
+
+    border: 1px solid rgba(255, 255, 255, .4);
+    box-shadow: 1px 1px 2px 1px var(--alpha-5), inset -1px -1px 1px rgba(255, 255, 255, .6);
+    /* filter: drop-shadow(2px 2px 2px var(--alpha-1)); */
+}
+
+/* 動態按鈕 */
+#contact-btn {
+    /* position: relative; */
+    /* outline: none; */
+    /* text-decoration: none; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /* text-transform: uppercase; */
+    height: 60px;
+    width: 210px;
+    border-radius: 99px;
+    margin: 1.5rem auto;
+    /* opacity: 1; */
+    background-color: transparent;
+    /* border: 1px solid rgba(22, 76, 167, 0.6); */
+}
+
+#contact-btn span {
+    color: #8d5d60;
+    font-size: .9rem;
+    font-weight: 500;
+    letter-spacing: 1rem;
+    padding-left: 1rem;
+    /* 字距大的匙後會歪掉，用padding推回 */
+}
+
+#contact-btn:hover {
+    animation: rotate 0.7s ease-in-out both;
+}
+
+#contact-btn:hover span {
+    animation: storm 0.7s ease-in-out both;
+    animation-delay: 0.06s;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg)
+            /* translate3d(0, 0, 0) */
+        ;
+    }
+
+    25% {
+        transform: rotate(3deg)
+            /* translate3d(0, 0, 0) */
+        ;
+    }
+
+    50% {
+        transform: rotate(-3deg)
+            /* translate3d(0, 0, 0) */
+        ;
+    }
+
+    75% {
+        transform: rotate(1deg)
+            /* translate3d(0, 0, 0) */
+        ;
+    }
+
+    100% {
+        transform: rotate(0deg)
+            /* translate3d(0, 0, 0) */
+        ;
+    }
+}
+
+@keyframes storm {
+    0% {
+        transform: translate3d(0, 0, 0)
+            /* translateZ(0) */
+        ;
+    }
+
+    25% {
+        transform: translate3d(4px, 0, 0)
+            /* translateZ(0) */
+        ;
+    }
+
+    50% {
+        transform: translate3d(-3px, 0, 0)
+            /* translateZ(0) */
+        ;
+    }
+
+    75% {
+        transform: translate3d(2px, 0, 0)
+            /* translateZ(0) */
+        ;
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0)
+            /* translateZ(0) */
+        ;
+    }
+}
+
+/* 裝飾圖 */
+.flower_r,
+.flower_w {
+    position: absolute;
+    opacity: .4;
+}
+
+.flower_r {
+    bottom: -130px;
+    left: -100px;
+    transform: rotate(30deg) scale(.6);
+}
+
+.flower_w {
+    top: -50px;
+    right: -60px;
+    transform: rotate(-30deg) scale(.7);
+}
+
+/* 頁尾區 */
+footer {
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    background-color: var(--scrollbar1);
+}
+
+#gotop {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 99px;
+
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+
+    z-index: 99;
+}
